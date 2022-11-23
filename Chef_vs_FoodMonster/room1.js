@@ -16,7 +16,7 @@ class room1 extends Phaser.Scene {
         this.load.tilemapTiledJSON('home','assets/home.tmj');
         this.load.image("interiorImg","assets/gather_interior_walls_1.6.png");
         this.load.image("kitchenImg","assets/12_Kitchen_32x32.png");
-        this.load.image("floorImg","assets/wood.png");
+        this.load.image("floorImg","assets/Wood.png");
         
     }
 
