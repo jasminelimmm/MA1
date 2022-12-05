@@ -49,12 +49,12 @@ class room2 extends Phaser.Scene {
         let tilesArray=[marketTiles,wallTiles,floorTiles];
 
         this.roadLayer=map.createLayer("road",tilesArray,0,0);
-    this.buildingLayer=map.createLayer("building",tilesArray,0,0);
-    this.itemLayer=map.createLayer("item",tilesArray,0,0);
+        this.buildingLayer=map.createLayer("building",tilesArray,0,0);
+        this.itemLayer=map.createLayer("item",tilesArray,0,0);
 
-    var startPoint = map.findObject("objectlayer", (obj) => obj.name === "start");
-    this.player = this.physics.add.sprite(startPoint.x,startPoint.y,'chef').play("up");
-    this.player.body.setSize(this.player.width*0.8,this.player.height*0.9)
+        var startPoint = map.findObject("objectlayer", (obj) => obj.name === "start");
+        this.player = this.physics.add.sprite(startPoint.x,startPoint.y,'chef').play("up");
+        this.player.body.setSize(this.player.width*0.8,this.player.height*0.9)
 
     // this.player.setScale(1);
     window.player = this.player;
@@ -74,6 +74,13 @@ class room2 extends Phaser.Scene {
     this.physics.add.collider(this.player,this.itemLayer);
     this.physics.add.collider(this.player,this.buildingLayer);
     
+    this.time.addEvent({
+      delay: 0,
+      callback: updateInventory,
+      callbackScope: this,
+      loop: false,
+    });
+
     //key
     this.anims.create({
       key: "key_anim4",
@@ -144,6 +151,13 @@ class room2 extends Phaser.Scene {
           this.physics.add.overlap(this.player, this.love6,this.collect_love,null,this);
           this.physics.add.overlap(this.player, this.love7,this.collect_love,null,this);
 
+          this.time.addEvent({
+            delay: 0,
+            callback: updateInventory,
+            callbackScope: this,
+            loop: false,
+          });
+
           //enemy
           this.time.addEvent({
             delay: 0,
@@ -159,12 +173,7 @@ class room2 extends Phaser.Scene {
             loop: false,
           });
       
-          this.time.addEvent({
-            delay: 0,
-            callback: this.moveRightLeft1,
-            callbackScope: this,
-            loop: false,
-          });
+          
 
           this.time.addEvent({
             delay: 0,
@@ -180,12 +189,7 @@ class room2 extends Phaser.Scene {
             loop: false,
           });
 
-          this.time.addEvent({
-            delay: 0,
-            callback: this.moveDownUp2,
-            callbackScope: this,
-            loop: false,
-          });
+          
 
           this.time.addEvent({
             delay: 0,
@@ -215,13 +219,7 @@ class room2 extends Phaser.Scene {
             loop: false,
           });
 
-          this.time.addEvent({
-            delay: 0,
-            callback: this.moveDownUp4,
-            callbackScope: this,
-            loop: false,
-          });
-
+          
           this.time.addEvent({
             delay: 0,
             callback: this.moveRightLeft6,
@@ -242,11 +240,7 @@ class room2 extends Phaser.Scene {
 
           this.prawn1 = this.physics.add.sprite(910, 70, "prawn")
           this.prawn1.body.setSize(this.prawn1.width*0.6,this.prawn1.height*0.4)
-          this.prawn2 = this.physics.add.sprite(730, 553, "prawn")
-          this.prawn2.body.setSize(this.prawn2.width*0.6,this.prawn2.height*0.4)
-          
-          this.crab1 = this.physics.add.sprite(935, 185, "crab")
-          this.crab1.body.setSize(this.crab1.width*0.6,this.crab1.height*0.4)
+         
           this.crab2 = this.physics.add.sprite(325, 345, "crab")
           this.crab2.body.setSize(this.crab2.width*0.6,this.crab2.height*0.4)
 
@@ -260,8 +254,7 @@ class room2 extends Phaser.Scene {
           this.carrot2 = this.physics.add.sprite(770, 385, "carrot")
           this.carrot2.body.setSize(this.carrot2.width*0.5,this.carrot2.height*0.5)
 
-          this.broccoli1 = this.physics.add.sprite(290, 120, "broccoli")
-          this.broccoli1.body.setSize(this.broccoli1.width*0.4,this.broccoli1.height*0.4)
+          
           this.broccoli2 = this.physics.add.sprite(145, 563, "broccoli")
           this.broccoli2.body.setSize(this.broccoli2.width*0.4,this.broccoli2.height*0.4)
 
@@ -325,16 +318,21 @@ collect_love(player,love){
   console.log("collect_loves");
  
 this.Collectlove_snd.play()
+window.heart++
+if (window.heart > 3){
+  window.heart = 3;
+}
  love.disableBody(true,true);
-  return false;
+ updateInventory.call(this)
 }
 
 collect_key(player,key){
   console.log("collect_keys");
  
 this.Collectkey_snd.play()
+window.key++
  key.disableBody(true,true);
-  return false;
+ updateInventory.call(this)
 }
 
 hit_enemy(player,enemy){
@@ -343,7 +341,15 @@ hit_enemy(player,enemy){
   //shake the camera
   this.cameras.main.shake(100);
   this.Crash_snd.play()
+  window.heart--
   enemy.disableBody(true,true);
+  updateInventory.call(this)
+  if (window.heart == 0){
+     
+    this.scene.stop('room2');
+    this.scene.start("gameOver")
+   
+  }
  
 }
 moveSquare1() {
@@ -352,7 +358,7 @@ moveSquare1() {
     targets: this.tomato1,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 500,
+    duration: 1200,
 
     tweens: [
       {
@@ -389,23 +395,7 @@ moveDownUp1() {
   });
 }
 
-moveRightLeft1() {
-  console.log("moveRightLeft");
-  this.tweens.timeline({
-    targets: this.crab1,
-    loop: -1, // loop forever
-    ease: "Linear",
-    duration: 1700,
-    tweens: [
-      {
-        x: 1080,
-      },
-      {
-        x: 935,
-      },
-    ],
-  });
-}
+
 
 moveRightLeft2() {
   console.log("moveRightLeft");
@@ -443,23 +433,6 @@ moveRightLeft3() {
   });
 }
 
-moveDownUp2() {
-  console.log("moveDownUp");
-  this.tweens.timeline({
-    targets: this.broccoli1,
-    ease: "Linear",
-    loop: -1, // loop forever
-    duration: 1000,
-    tweens: [
-      {
-        y: 250,
-      },
-      {
-        y: 120,
-      },
-    ],
-  });
-}
 
 moveDownUp3() {
   console.log("moveDownUp");
@@ -521,7 +494,7 @@ moveSquare2() {
     targets: this.broccoli2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 500,
+    duration: 1200,
 
     tweens: [
       {
@@ -540,23 +513,6 @@ moveSquare2() {
   });
 }
 
-moveDownUp4() {
-  console.log("moveDownUp");
-  this.tweens.timeline({
-    targets: this.prawn2,
-    ease: "Linear",
-    loop: -1, // loop forever
-    duration: 1000,
-    tweens: [
-      {
-        y: 698,
-      },
-      {
-        y: 553,
-      },
-    ],
-  });
-}
 
 moveRightLeft6() {
   console.log("moveRightLeft");

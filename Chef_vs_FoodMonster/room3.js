@@ -39,16 +39,23 @@ class room3 extends Phaser.Scene {
         let tilesArray=[labTiles,wallTiles,floorTiles];
 
         this.roadLayer=map.createLayer("road",tilesArray,0,0);
-    this.buildingLayer=map.createLayer("building",tilesArray,0,0);
-    this.itemLayer=map.createLayer("item",tilesArray,0,0);
+        this.buildingLayer=map.createLayer("building",tilesArray,0,0);
+        this.itemLayer=map.createLayer("item",tilesArray,0,0);
 
-    var startPoint = map.findObject("objectlayer", (obj) => obj.name === "start");
-    this.player = this.physics.add.sprite(startPoint.x,startPoint.y,'chef').play("up");
-    this.player.body.setSize(this.player.width*0.8,this.player.height*0.9)
+        var startPoint = map.findObject("objectlayer", (obj) => obj.name === "start");
+        this.player = this.physics.add.sprite(startPoint.x,startPoint.y,'chef').play("up");
+        this.player.body.setSize(this.player.width*0.8,this.player.height*0.9)
     // this.player.setScale(1);
     window.player = this.player;
 
     this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.time.addEvent({
+      delay: 0,
+      callback: updateInventory,
+      callbackScope: this,
+      loop: false,
+    });
 
     //antidote
     this.anims.create({
@@ -63,6 +70,7 @@ class room3 extends Phaser.Scene {
       this.orange = this.physics.add.sprite(Orange.x,Orange.y,'Orange').play("orange_anim")
       this.orange.body.setSize(this.orange.width*0.5,this.orange.height*0.7)
 
+    
       this.anims.create({
         key: "blue_anim",
         frames: this.anims.generateFrameNumbers("Blue", { start: 0, end: 2 }),
@@ -155,6 +163,7 @@ class room3 extends Phaser.Scene {
           }
       
 
+
     }
 
 // Function to jump to world
@@ -174,14 +183,22 @@ collect_wrong(player,wrong_dote){
   // this.cameras.main.shake(100);
   this.Crash_snd.play()
  wrong_dote.disableBody(true,true);
+ this.scene.stop('room3');
+    this.scene.start("gameOver")
 }
 
 collect_antidote(player,antidote){
   console.log("collect_antidotes");
-  
+  window.antidote++
   this.Collectmedicine_snd.play()
  antidote.disableBody(true,true);
-  return false;
+ if (window.antidote >=2){
+     
+  this.scene.stop('room3');
+  this.scene.start("winScene")
+ 
+}
+  // if (window.antidote>1{}
 }
 
 

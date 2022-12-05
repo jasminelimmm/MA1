@@ -10,6 +10,7 @@ class preloadScene9 extends Phaser.Scene {
     preload() {
   
       this.load.image("Gamecontrol","assets/gamecontrol.png");
+      this.load.audio("Enter","assets/gamemusic/enter.wav")
   
     }
   
@@ -21,7 +22,7 @@ class preloadScene9 extends Phaser.Scene {
   
       // Check for spacebar or any key here
       var spaceDown = this.input.keyboard.addKey("ENTER");
-  
+      this.Enter_snd= this.sound.add("Enter")
       
   
       // On spacebar event, call the world scene
@@ -35,6 +36,8 @@ class preloadScene9 extends Phaser.Scene {
         playerPos.facing ="down"
         console.log(playerPos)
         this.scene.start("room1",{player: playerPos});
+        this.Enter_snd= this.sound.add("Enter")
+          this.Enter_snd.play()
     },
     this
     );

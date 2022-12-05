@@ -18,11 +18,22 @@ class room1 extends Phaser.Scene {
         this.load.image("kitchenImg","assets/12_Kitchen_32x32.png");
         this.load.image("floorImg","assets/Wood.png");
         
+        
     }
 
     create() {
       console.log(this.player)
         console.log('*** room1 scene');
+
+    this.time.addEvent({
+      delay: 0,
+      callback: updateInventory,
+      callbackScope: this,
+      loop: false,
+    });
+    
+
+
         let map = this.make.tilemap({key:'home'});
         let wallTiles = map.addTilesetImage("gather_interior_walls_1.6","interiorImg");
         let objectTiles = map.addTilesetImage("12_Kitchen_32x32","kitchenImg");
@@ -30,16 +41,16 @@ class room1 extends Phaser.Scene {
         let tilesArray=[wallTiles,objectTiles,floorTiles];
 
         this.roadLayer=map.createLayer("road",tilesArray,0,0);
-    this.buildingLayer=map.createLayer("building",tilesArray,0,0);
-    this.itemLayer=map.createLayer("item",tilesArray,0,0);
+        this.buildingLayer=map.createLayer("building",tilesArray,0,0);
+        this.itemLayer=map.createLayer("item",tilesArray,0,0);
 
-    var startPoint = map.findObject("objectlayer", (obj) => obj.name === "start");
-    this.player = this.physics.add.sprite(this.player.x,this.player.y,'chef').play(this.player.facing);
-    this.player.body.setSize(this.player.width*0.8,this.player.height*0.9)
-    // this.player.setScale(1);
-    window.player = this.player;
+        var startPoint = map.findObject("objectlayer", (obj) => obj.name === "start");
+        this.player = this.physics.add.sprite(this.player.x,this.player.y,'chef').play(this.player.facing);
+        this.player.body.setSize(this.player.width*0.5,this.player.height*0.7)
+   
+        window.player = this.player;
 
-    this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys();
 
     // set bounds so the camera won't go outside the game world
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -58,7 +69,8 @@ class room1 extends Phaser.Scene {
     
     this.physics.add.collider(this.player,this.buildingLayer);
     this.physics.add.collider(this.player,this.itemLayer);
-    
+
+    this.scene.launch("showInventory");
 
     }
 
@@ -95,7 +107,8 @@ class room1 extends Phaser.Scene {
             console.log("world")
             this.world();
           }
-      
+     
+
 
     }
 

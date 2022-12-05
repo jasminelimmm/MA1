@@ -10,6 +10,7 @@ class preloadScene3 extends Phaser.Scene {
     preload() {
   
       this.load.image("Task","assets/task.png");
+      this.load.audio("Enter","assets/gamemusic/enter.wav")
   
     }
   
@@ -21,7 +22,8 @@ class preloadScene3 extends Phaser.Scene {
   
       // Check for spacebar or any key here
       var spaceDown = this.input.keyboard.addKey("ENTER");
-  
+      this.Enter_snd= this.sound.add("Enter")
+      
       
   
       // On spacebar event, call the world scene
@@ -30,6 +32,8 @@ class preloadScene3 extends Phaser.Scene {
         function () {
           console.log("Jump to preloadScene4");
           this.scene.start( "preloadScene4");
+          this.Enter_snd= this.sound.add("Enter")
+          this.Enter_snd.play()
         },
         this
       );
