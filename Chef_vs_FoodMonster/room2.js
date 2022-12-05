@@ -358,7 +358,7 @@ moveSquare1() {
     targets: this.tomato1,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1500,
 
     tweens: [
       {
@@ -403,7 +403,7 @@ moveRightLeft2() {
     targets: this.bawang1,
     loop: -1, // loop forever
     ease: "Linear",
-    duration: 1000,
+    duration: 1300,
     tweens: [
       {
         x: 260,
@@ -421,7 +421,7 @@ moveRightLeft3() {
     targets: this.carrot1,
     loop: -1, // loop forever
     ease: "Linear",
-    duration: 950,
+    duration: 1400,
     tweens: [
       {
         x: 260,
@@ -440,7 +440,7 @@ moveDownUp3() {
     targets: this.meat1,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1500,
     tweens: [
       {
         y: 730,
@@ -458,7 +458,7 @@ moveRightLeft4() {
     targets: this.bawang2,
     loop: -1, // loop forever
     ease: "Linear",
-    duration: 950,
+    duration: 1400,
     tweens: [
       {
         x: 485,
@@ -476,7 +476,7 @@ moveRightLeft5() {
     targets: this.crab2,
     loop: -1, // loop forever
     ease: "Linear",
-    duration: 1000,
+    duration: 1600,
     tweens: [
       {
         x: 480,
@@ -494,7 +494,7 @@ moveSquare2() {
     targets: this.broccoli2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1500,
 
     tweens: [
       {
@@ -520,7 +520,7 @@ moveRightLeft6() {
     targets: this.carrot2,
     loop: -1, // loop forever
     ease: "Linear",
-    duration: 1000,
+    duration: 1500,
     tweens: [
       {
         x: 954,
@@ -538,7 +538,7 @@ moveDownUp5() {
     targets: this.meat2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1600,
     tweens: [
       {
         y: 250,

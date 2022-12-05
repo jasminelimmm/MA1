@@ -574,7 +574,7 @@ moveDownUp() {
     targets: this.burger1,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1500,
+    duration: 1800,
     tweens: [
       {
         y: 470,
@@ -592,7 +592,7 @@ moveDownUp1() {
     targets: this.burger2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1300,
+    duration: 1700,
     tweens: [
       {
         y: 730,
@@ -614,7 +614,7 @@ moveDownUp3() {
     targets: this.pizza2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1500,
+    duration: 1800,
     tweens: [
       {
         y: 300,
@@ -632,7 +632,7 @@ moveRightLeft2() {
     targets: this.pizza1,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1100,
+    duration: 1600,
     tweens: [
       {
         x: 600,
@@ -650,7 +650,7 @@ moveRightLeft3() {
     targets: this.pizza3,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1000,
+    duration: 1700,
     tweens: [
       {
         x: 1550,
@@ -669,7 +669,7 @@ moveDownUp4() {
     targets: this.pizza4,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1000,
+    duration: 1600,
     tweens: [
       {
         y: 1200,
@@ -689,7 +689,7 @@ moveDownUp5() {
     targets: this.sushi2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1000,
+    duration: 1600,
     tweens: [
       {
         y: 880,
@@ -707,7 +707,7 @@ moveDownUp6() {
     targets: this.sushi3,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1000,
+    duration: 1700,
     tweens: [
       {
         y: 435,
@@ -725,7 +725,7 @@ moveRightLeft5() {
     targets: this.sushi4,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1000,
+    duration: 1500,
     tweens: [
       {
         x: 143,
@@ -745,7 +745,7 @@ moveDownUp7() {
     targets: this.bread2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 980,
+    duration: 1500,
     tweens: [
       {
         y: 1205,
@@ -763,7 +763,7 @@ moveRightLeft7() {
     targets: this.bread3,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1400,
+    duration: 1800,
     tweens: [
       {
         x: 760,
@@ -783,7 +783,7 @@ moveRightLeft9() {
     targets: this.frenchfries2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 980,
+    duration: 1500,
     tweens: [
       {
         x: 1430,
@@ -801,7 +801,7 @@ moveRightLeft10() {
     targets: this.frenchfries3,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1300,
+    duration: 1700,
     tweens: [
       {
         x: 1180,
@@ -821,7 +821,7 @@ moveRightLeft11() {
     targets: this.donut2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 980,
+    duration: 1600,
     tweens: [
       {
         x: 1550,
@@ -839,7 +839,7 @@ moveRightLeft12() {
     targets: this.donut3,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1500,
+    duration: 1700,
     tweens: [
       {
         x: 1140,
@@ -875,7 +875,7 @@ moveRightLeft14() {
     targets: this.chicken1,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1600,
     tweens: [
       {
         x: 440,
@@ -893,7 +893,7 @@ moveRightLeft15() {
     targets: this.chicken2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1400,
     tweens: [
       {
         x: 495,
@@ -913,7 +913,7 @@ moveDownUp9() {
     targets: this.chicken4,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1400,
+    duration: 1600,
     tweens: [
       {
         y: 890,
@@ -931,7 +931,7 @@ moveDownUp10() {
     targets: this.coffee1,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1400,
+    duration: 1600,
     tweens: [
       {
         y: 776,
@@ -949,7 +949,7 @@ moveRightLeft16() {
     targets: this.coffee2,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1600,
     tweens: [
       {
         x: 600,
@@ -967,7 +967,7 @@ moveRightLeft17() {
     targets: this.coffee3,
     ease: "Linear",
     loop: -1, // loop forever
-    duration: 1200,
+    duration: 1500,
     tweens: [
       {
         x: 1550,
