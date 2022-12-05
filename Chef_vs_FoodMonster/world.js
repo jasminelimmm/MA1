@@ -99,13 +99,6 @@ class world extends Phaser.Scene {
       loop: false,
     });
 
-    this.time.addEvent({
-      delay: 0,
-      callback: this.moveRightLeft,
-      callbackScope: this,
-      loop: false,
-    });
-
     
 
     this.time.addEvent({
@@ -136,12 +129,7 @@ class world extends Phaser.Scene {
       loop: false,
     });
 
-    this.time.addEvent({
-      delay: 0,
-      callback: this.moveRightLeft4,
-      callbackScope: this,
-      loop: false,
-    });
+    
   
     this.time.addEvent({
       delay: 0,
@@ -355,8 +343,6 @@ class world extends Phaser.Scene {
     this.burger1.body.setSize(this.burger1.width*0.4,this.burger1.height*0.4)
     this.burger2 = this.physics.add.sprite(145, 570, "burger")
     this.burger2.body.setSize(this.burger2.width*0.4,this.burger2.height*0.4)
-    this.burger3 = this.physics.add.sprite(1032, 570, "burger")
-    this.burger3.body.setSize(this.burger3.width*0.4,this.burger3.height*0.4)
     
     this.pizza1 = this.physics.add.sprite(460, 680, "pizza")
     this.pizza1.body.setSize(this.pizza1.width*0.4,this.pizza1.height*0.4)
@@ -367,8 +353,7 @@ class world extends Phaser.Scene {
     this.pizza4 = this.physics.add.sprite(860, 1100, "pizza")
     this.pizza4.body.setSize(this.pizza4.width*0.4,this.pizza4.height*0.4)
  
-    this.sushi1 = this.physics.add.sprite(270, 1100, "sushi")
-    this.sushi1.body.setSize(this.sushi1.width*0.5,this.sushi1.height*0.4)
+    
     this.sushi2 = this.physics.add.sprite(903, 710, "sushi")
     this.sushi2.body.setSize(this.sushi2.width*0.5,this.sushi2.height*0.4)
     this.sushi3 = this.physics.add.sprite(782, 325, "sushi")
@@ -619,23 +604,7 @@ moveDownUp1() {
   });
 }
 
-moveRightLeft() {
-  //console.log("moveRightLeft");
-  this.tweens.timeline({
-    targets: this.burger3,
-    ease: "Linear",
-    loop: -1, // loop forever
-    duration: 1700,
-    tweens: [
-      {
-        x: 1140,
-      },
-      {
-        x: 1032,
-      },
-    ],
-  });
-}
+
 
 
 
@@ -712,23 +681,7 @@ moveDownUp4() {
   });
 }
 
-moveRightLeft4() {
-  //console.log("moveRightLeft");
-  this.tweens.timeline({
-    targets: this.sushi1,
-    ease: "Linear",
-    loop: -1, // loop forever
-    duration: 950,
-    tweens: [
-      {
-        x: 400,
-      },
-      {
-        x: 270,
-      },
-    ],
-  });
-}
+
 
 moveDownUp5() {
   //console.log("moveDownUp");
